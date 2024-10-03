@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Multi Select Option</title>
+    <style>
+        #skills{
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            border: none;
+            outline: none;
+        }
+        #skills option {
+            cursor: pointer;
+            display: block;
+            padding: 20px 0;
+            border-bottom: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="skills">Pilih Skill:</label>
+    <br>
+    <select id="skills" multiple>
+        <option value="html">HTML </option>
+        <option value="css">CSS</option>
+        <option value="javascript">JavaScript</option>
+        <option value="react">React</option>
+        <option value="angular">Angular</option>
+        <option value="vue">Vue.js</option>
+    </select>
+
+    <div id="isi"></div>
+
+    <script>
+        const select = document.querySelectorAll('#skills option');
+        const isiP = document.getElementById('isi');
+    
+        select.forEach(option => {
+            option.addEventListener('click', e => {
+                const value = e.target.value;
+    
+                if (!e.target.classList.contains('selected')) {
+                    // Menambahkan elemen <p> dengan data yang dipilih
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = value;
+                    isiP.appendChild(paragraph);
+    
+                    // Menandai opsi yang dipilih
+                    e.target.classList.add('selected');
+                } else {
+                    // Menghapus elemen <p> dengan data yang dipilih
+                    const paragraphs = isiP.getElementsByTagName('p');
+                    for (let i = 0; i < paragraphs.length; i++) {
+                        if (paragraphs[i].textContent === value) {
+                            paragraphs[i].remove();
+                            break;
+                        }
+                    }
+                    // Membatalkan tanda pada opsi yang diklik
+                    e.target.classList.remove('selected');
+                }
+            });
+        });
+    </script>
+    
+</body>
+
+</html>

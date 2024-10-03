@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for of and for in</title>
+</head>
+<body>
+    <!-- looping baru di modern javascript -->
+    <ul>
+        <li>Fayi Muhadzdzib</li>
+        <li>Fahtar Ibroham</li>
+        <li>Iqbal Nuragun</li>
+        <li>Morgan Pardede</li>
+        <li>Daffa Ibrahim</li>
+    </ul>
+    <script>
+        // for..of = sebuah looping yang bisa mengulang / menelusuri onject" yang iterable
+        // Iterable Object : String, Array, Arguments / NodeLis, TypedArray, Map, Set, User-defined Iterables
+
+        // Array
+        const zolds = ['fahtar', 'fayi', 'iqbal', 'daffa', 'ogan', 'zidan', 'nabil'];
+        for( const zold of zolds ){
+            console.log(zold);
+        }
+        // cara lain kalau mau pakai for of tapi mau ada indexnya juga
+        for( const [i, z] of zolds.entries()){ // entries() = bakal ngejadiin tiap isi arraynya kek gni "[0, 'fahtar']"
+            console.log(`${z} adalah anggota zold ke-${i + 1}`);
+        }
+
+        // String
+        const nama = 'fayi muhadzdzib';
+        for( const n of nama ){ // dia bakal ngeloop karakter di stringnya
+            console.log(n);
+        }
+
+        // NodeList
+        const li = document.querySelectorAll('ul li');
+        for( const n of li ){
+            console.log(n.innerHTML);
+        }
+
+        // Arguments
+        function jumlahkanAngka(){
+            let jumlah = 0;
+            for( a of arguments ){ // arguments = variabel bawaan klo function lu gk punya parameter tpi ada argumentny
+                jumlah += a;
+            }
+            return jumlah;
+        }
+        console.log(jumlahkanAngka(1,2,3,4,5,6,7,8,9,10));
+
+
+        // for..in = hanya untuk enumerable
+        // enumerable di sni maksudnya property pada object
+        const profil = {
+            nama: 'Fayi Muhadzdzib',
+            umur: 17,
+            email: 'fayi@gmail.com'
+        }
+        for(me in profil){
+            // console.log(me); // yg diambil propertynya
+            console.log(profil[me]); // yg diambil isi propertynya
+        }
+    </script>
+</body>
+</html>

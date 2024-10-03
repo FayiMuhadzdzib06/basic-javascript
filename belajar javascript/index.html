@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+        }
+        .gantimode{
+            background-color: black;
+            color: white;
+        }
+        .container {
+            width: 100px;
+            height: 100px;
+            border-top: 10px solid red;
+            border-right: 10px solid blue;
+            border-left: 10px solid rgb(0, 255, 0);
+            border-bottom: 10px solid rgb(255, 251, 0);
+            border-radius: 50%;
+            margin: 170px auto 0;
+            animation: muter 1s linear infinite;
+        }
+        @keyframes muter {
+            from {
+                transform: rotate(0);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <button>munculkan pesan</button>
+    <button onclick="gantiJudul()">ganti judul</button>
+    <button onclick="darkMode()">Dark Mode manual</button>
+    <div id="teks">
+        <h1>THE WORLD</h1>
+    </div>
+    <div class="container">
+
+    </div>
+
+
+    <script>
+        let btn = document.querySelectorAll('button')[0];
+        btn.addEventListener('click', function(){
+            alert('hello banh');
+            let nama = prompt('Masukkan Nama Mu Banh');
+            alert(`Nama Kamu ${nama} `);
+        });
+        function gantiJudul(){
+            let btn = document.querySelector('h1');
+            btn.innerHTML = 'THE WORLD OVER HEAVEN';
+        }
+        function darkMode(){
+            const body = document.body;
+            body.classList.toggle('gantimode');
+            console.log('Santai dlu gak si!!');
+        }
+
+    </script>
+</body>
+</html>

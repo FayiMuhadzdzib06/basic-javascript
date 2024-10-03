@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    <script>
+        // Lexical Scope
+        // function init(){
+            // // let nama = "Fayi"; // local variable
+            // function tampilkanNama(nama){ // inner function ( closure )
+                // console.log(nama); // akses ke parent variable
+            // }
+            // return tampilkanNama;
+        // }
+        // let panggil = init();
+        // let input = prompt('Masukkan Nama : ');
+        // panggil(input);
+
+        // lebih ringkas
+        // function init(){
+        //     // let nama = "Fayi"; // local variable
+        //     return function(nama){ // inner function ( closure )
+        //         console.log(nama); // akses ke parent variable
+        //     }
+        // }
+        // let panggil = init();
+        // let input = prompt('Masukkan Nama : ');
+        // panggil(input);
+
+        // Kenapa menggunakan closure
+        // 1. Untuk membuat function factories
+        function salam(waktu){
+            return function(nama){
+                console.log(`Halo ${nama}, Selamat ${waktu}!!, Semoga Harimu Menyenangkan!!`);
+            }
+        }
+        let salamPagi = salam('Pagi');
+        let salamSiang = salam('Siang');
+        let salamMalam = salam('Malam');
+
+        salamMalam('Fayi Muhadzdzib');
+
+        // 2. Untuk membuat private method
+        // immediately invoked function expression = saat function itu di buat langsung di jalankan, functionnya *berlaku utk function expression
+        let add = (function(){
+            let counter = 0; // variablenya private gak bisa di akses dari luar ( soalnya local bro, kecuali lu bikin variablenya di local juga baru berubah )
+            return function(){
+                return ++counter;
+            }
+        }()); // "()" biar lngsng dijalanin
+
+        console.log(add());
+        console.log(add());
+        console.log(add());
+
+    </script>
+</body>
+</html>

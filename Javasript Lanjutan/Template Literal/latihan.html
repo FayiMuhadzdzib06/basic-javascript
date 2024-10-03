@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan</title>
+</head>
+<body>
+    
+    <script>
+        // looping
+        const orang1 = [
+            {
+                nama: 'Fayi Muhadzdzib',
+                umur: 17
+            },
+            {
+                nama: 'Iqbal Nuragun',
+                umur: 17
+            },
+            {
+                nama: 'Fahtar Ibroham',
+                umur: 16
+            }
+        ];
+        const tes = `<div>
+            ${orang1.map(o => `<ul>
+                <li>Nama ku ${o.nama}</li>
+                <li>Umur ku ${o.umur}</li>
+            </ul>`).join('')}
+        </div>`;
+        // document.body.innerHTML = tes;
+
+        // conditional
+        const lagu = {
+            judul: 'Darkside',
+            penyanyi: 'Alan Walker',
+            rival: 'Marshmellow'
+        }
+        const coba = `<div>
+            <h1>${lagu.judul}</h1>
+            <h2>Penyanyi : ${lagu.penyanyi}</h2>
+            <span>Rival : ${lagu.rival ? lagu.rival : 'Tidak Ada'}</span>
+        </div>`
+
+        // document.body.innerHTML = coba;
+        
+        // Nested / HTML Fragment bersarang
+        const pelajar = {
+            nama: 'Fayi Muhadzdzib',
+            jurusan: 'Rekayasa Perangkat Lunak',
+            pelajaranProduktif: [
+                'Pemrograman Berorientasi Objek',
+                'Pemrograman Web Perangkat Bergerak ',
+                'Produk Kreatif dan Kreatifitas ',
+            ]
+        }
+        function cetakPelaDuktif(pd){
+            return `<ol>
+                    ${pd.map(p => `<li>
+                        ${p}
+                    </li>`)}
+                </ol>`
+        }
+        const imp = `<div>
+            <h1>${pelajar.nama}</h1>
+            <span>Jurusan : ${pelajar.jurusan}</span>
+            <br/><br/>
+            <span>Pelajaran Produktif : </span>
+            <span>
+                ${cetakPelaDuktif(pelajar.pelajaranProduktif)}
+            </span>
+        </div>`
+        document.body.innerHTML = imp;
+    </script>
+</body>
+</html>

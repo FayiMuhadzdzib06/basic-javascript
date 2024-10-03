@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh</title>
+</head>
+<body>
+    <script>
+        // rekursif adalah fungsi yang memanggil dirinya sendiri
+        // base case adalah kondisi akhir dari rekursif yang menghasilkan nilai
+        function tampilAngka(n){
+            // base case
+            if( n === 0 ) {
+                alert('kosong');
+                return; // return yang gak ada isinya berfungsi utk memberhentikan function
+            }
+            alert(n);
+            return tampilAngka(n-1);
+        }
+        tampilAngka(5);
+    </script>
+</body>
+</html>

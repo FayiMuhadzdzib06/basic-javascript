@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contoh arrow function</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            margin: 50px auto;
+            transition: .3s width,
+                        .3s height .3s,
+                        .3s margin-top .3s,
+                        .3s background-color;
+        }
+
+        .size {
+            width: 150px;
+            height: 150px;
+            margin-top: 25px;
+        }
+
+        .caption{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+        const box = document.querySelector('.box');
+        box.addEventListener('click', function(){
+            // cuma mau rapihin animasinya
+            let satu = 'size';
+            let dua = 'caption';
+
+            if( this.classList.contains(satu) ){
+                // cara baru buat nukerin isi dari 2 variabel
+                [satu, dua] = [dua, satu];
+            }
+
+            // "this" disini artinya "box"
+            this.classList.toggle(satu);
+            // setTimeout() ini kek pengkondisian, jadi kek "mau nunggu berapa detik biar isi di dalemnya di jalankan"
+            // kenapa kalo pke function biasa gak jalan?? karena kena hoisting, jadi si setTimeout()nya di jalanin dluan otomatis posisinya ada di global scope
+            setTimeout(() => { // mangkanya pke arrow function, biar thisna
+                this.classList.toggle(dua);
+            }, 800)
+        });
+    </script>
+</body>
+</html>

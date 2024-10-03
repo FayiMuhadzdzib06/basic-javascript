@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks</title>
+</head>
+<body>
+    <!-- callbacks : function yang dikirimkan sebagai parameter pada function yang lain -->
+    <script>
+        // Synchronous Callbacks
+        // function tampilkanPesan(callback){
+        //     const nama = prompt('Masukkan Nama : ');
+        //     callback(nama);
+        // }
+        // tampilkanPesan(nama => alert(`Hallo, ${nama}`));
+
+        // Asynchronous Callbacks
+        // menggunakan Ajax
+        function getDataPlayer(url, success, error){
+            let xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function(){
+                if( xhr.readyState === 4 ){
+                    if( xhr.status === 200 ){
+                        success(xhr.response);
+                    }else if( xhr.status === 404 ){
+                        error();
+                    }
+                }
+            }
+
+            xhr.open('get', url);
+            xhr.send();
+        }
+
+        console.log('mulai'); // pertama di tampilin
+        getDataPlayer('data/player.json', result => {
+            const players = JSON.parse(result);
+            // terakhir di tampilin, karena asynchronous jadi masuk ke Web API => Event Loop => baru tampilin ke console
+            players.forEach(p => console.log(`Nama : ${p.nama}, Role : ${p.role}`)); 
+        }, () => {});
+        console.log('selesai'); // kedua di tampilin
+
+        // jadi klo pake Asynchronous itu 
+    </script>
+</body>
+</html>

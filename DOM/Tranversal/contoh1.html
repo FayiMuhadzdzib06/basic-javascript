@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Tranversal</title>
+    <style>
+        body {
+            margin: 50px;
+            font-family:Arial, Helvetica, sans-serif;
+            background-color: #666;
+        }
+        
+        .container {
+            width: 900px;
+            margin: auto;
+        }
+        
+        .card {
+            display: inline-block;
+            width: 220px;
+            padding: 0 80px;
+            height: 80px;
+            font-size: 16px;
+            line-height: 80px;
+            border-radius: 40px;
+            background-color: #f1f1f1;
+            margin: 20px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .card img {
+            float: left;
+            margin: 0 10px 0 -80px;
+            height: 78px;
+            width: 78px;
+            border-radius: 50%;
+            position: relative;
+            border: 1px solid #00000055;
+        }
+        
+        .card .nama, .card .telp {
+            display: block;
+            line-height: 20px;
+            padding: 0 5px;
+        }
+        
+        .card .nama {
+            margin-left: 20px;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        
+        .card .telp {
+            margin-left: 20px;
+            margin-top: 5px;
+            font-size: 16px;
+            color: #aaa;
+        }
+        
+        .card .close {
+            font-size: 24px;
+            font-weight: bold;
+            color: #999;
+            position: absolute;
+            top: 0;
+            right: 30px;
+            cursor: pointer;
+        }
+        
+        .card:hover .close {
+            color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <img src="bg.png" alt="">
+            <span class="nama">Fayi Muhadzdzib</span>
+            <span class="telp">089766510018</span>
+            <span class="close">x</span>
+        </div>
+        <div class="card">
+            <img src="bg.png" alt="">
+            <span class="nama">Zidan Triyadi</span>
+            <span class="telp">089766510018</span>
+            <span class="close">x</span>
+        </div>
+        <div class="card">
+            <img src="bg.png" alt="">
+            <span class="nama">Adi Prima</span>
+            <span class="telp">089766510018</span>
+            <span class="close">x</span>
+        </div>
+        <div class="card">
+            <img src="bg.png" alt="">
+            <span class="nama">Hasan Khoirul</span>
+            <span class="telp">089766510018</span>
+            <span class="close">x</span>
+        </div>
+    </div>
+
+    <script>
+        // Event Handling
+        let close = document.querySelectorAll('.container .card .close');
+        let card = document.querySelectorAll('.card'); 
+
+        // DOM TRANVERSAL
+        // pke for
+        for(let i = 0; i < close.length; i++){
+            close[i].addEventListener('click', function(e){ 
+                // parentElement = berfungsi untuk mencari induk dari elemen yang kita seleksi
+                // .target menargetkan elemen yg lu pencet barusan 
+                e.target.parentElement.style.display = 'none';
+            });
+        }
+        
+        // cara tercepatt menggunakan foreach
+        // parameter 'el' itu sama aja kek 'close[i]'
+        close.forEach(function(el){
+            el.addEventListener('click', function(e){
+                e.target.parentElement.style.display = 'none';
+            });
+        });
+
+        // DOM TRANVERSAL METHOD
+        const nama = document.querySelector('.nama');
+        // parentElement (element)
+        // kalau mau nampilin '.container' bisa berkali" menggunakan 'parentElement'
+        // console.log(nama.parentElement.parentElement); 
+        
+        // nextSibling (node)
+        // kalau mau nampilin element selanjutnya yg satu induk/parent dari element yg lu select pke ini
+        // tetapi kalau ada enter atau jarak sedikit antara elemen yg di select dan elemen selanjutnya akan keambil dan di jadikan valuenya
+        // console.log(nama.nextSibling); 
+
+        // nextElementSibling (element)
+        // kalau mau nampilin element selanjutnya yg satu induk/parent dari element yg lu select pke ini
+        // sma kek yg di atas bedanya dia bakal mengabaikan enter atau jarak
+        console.log(nama.nextElementSibling); 
+
+        // children
+        // Metode ini mengembalikan daftar elemen anak (children) dari suatu elemen dalam DOM.
+        
+
+    </script>
+</body>
+</html>

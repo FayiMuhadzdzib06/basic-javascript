@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulation Node</title>
+    <style>
+        *{
+            border:  2px solid #dedede;
+            padding: 15px;
+            margin: 15px;
+        }
+        html {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            max-width: 600px;
+            margin: 30px auto;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="judul">Hello World</h1>
+    <div id="container">
+        <section id="a">
+            <p class="p1">paragraf 1</p>
+            <a href="http://instagram.com/Fkydzzb_">Instagram Fayi Muhadzdzib</a>
+            <p class="p2">paragraf 2</p>
+            <p class="p3">paragraf 3</p>
+        </section>
+        <section id="b">
+            <p>paragraf 4</p>
+            <ul>
+                <li>item 1</li>
+                <li>item 2</li>
+                <li>item 3</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // DOM Manipulation
+        // buat elemen baru
+        const pBaru = document.createElement('p'); // createElement() membuat elemen baru
+        const teks = document.createTextNode('New Paragraf ( createElement, createTextNode, appendChild )'); // createTextNode() untuk membuat teks yg akan di isi ke elemen 
+        // simpan tulisan ke dalam paragraf
+        pBaru.appendChild(teks); // appendChild() untuk menyimpan ke akhir dari sebuah elemen parent, seperti elemen > teks atau elemen > elemen
+        // simpan pBaru di akhir Section A
+        const sectionA = document.getElementById('a');
+        sectionA.appendChild(pBaru);
+
+        const liBaru = document.createElement('li'); // wadah
+        const isi_li = document.createTextNode('item baru ( insertBefore() )'); // isi
+        liBaru.appendChild(isi_li); // taro isi ke wadah
+        const ul = document.querySelector('#b ul');
+        const li2 = ul.querySelector('li:nth-child(2)');
+
+        ul.insertBefore(liBaru, li2); // insertBefore() bisa bebas menyimpan element dimana saja
+
+        const link = sectionA.querySelector('a');
+        sectionA.removeChild(link); // removeChild() untuk menghapus child/anak
+
+        const sectionB = document.getElementById('b');
+        const p4 = sectionB.querySelector('p');
+
+        const h2Baru = document.createElement('h2');
+        const teksH2Batu = document.createTextNode('Judul Baru ( replaceChild() )');
+
+        h2Baru.appendChild(teksH2Batu);
+        sectionB.replaceChild(h2Baru, p4); // replaceChild() untuk mengganti child
+        
+
+    </script>
+</body>
+</html>

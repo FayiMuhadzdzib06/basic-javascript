@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan</title>
+</head>
+<body>
+    <h3>My Videos</h3>
+    <ul>
+        <li data-duration="15:27">Teknik Ponodoro</li>
+        <li data-duration="11:18">JAVASCRIPT LANJUTAN | Higher Order Functions</li>
+        <li data-duration="21:40">JAVASCRIPT LANJUTAN | This pada Arrow Functions</li>
+        <li data-duration="19:38">Website Penipu</li>
+        <li data-duration="12:10">JAVASCRIPT LANJUTAN | Arrow Function</li>
+        <li data-duration="20:43">JAVASCRIPT LANJUTAN | Closure</li>
+        <li data-duration="14:30">#TANYAPADIKA EP005</li>
+        <li data-duration="26:38">JAVASCRIPT LANJUTAN | Execution Context</li>
+        <li data-duration="17:33">JAVASCRIPT LANJUTAN | Prototype</li>
+        <li data-duration="10:39">JAVASCRIPT LANJUTAN | Object.create()</li>
+        <li data-duration="17:31">JAVASCRIPT LANJUTAN | Object (Revisited)</li>
+        <li data-duration="14:25">5 Tips Bertanya Ketika Error</li>
+    </ul>
+
+    <h3>My Playlist</h3>
+    <ol>
+        <li>
+            <h4>Javascript Lanjutan</h4>
+            <p>Jumlah Video : <span class="jumlah-video"></span></p>
+            <p>Total Durasi : <span class="total-durasi"></span></p>
+        </li>
+    </ol>
+
+    <script>
+        // ambil semua elemen
+        // Array.from() ubah ini "document.querySelectorAll('[data-duration]')" jadi array
+        let videos = Array.from(document.querySelectorAll('[data-duration]')); // masih jadi NodeList harus di jadiin array dlu
+        
+        // pilih hanya yang 'JAVASCRIPT LANJUTAN'
+        // textContent = buat ngambil isi content yg berupa text
+        // includes() = yg seperti apa kata" contentnya
+        let JSlanjutan = videos.filter(li => li.textContent.includes('JAVASCRIPT LANJUTAN'))
+        
+        // ambil durasi masing" video
+        // dataset.duration = ngambil isi dari atribute "data-duration"
+        .map(item => item.dataset.duration)
+
+        // ubah durasi menjadi float, menit menjadi detik
+        .map(waktu => {
+            // 10:30 => [10, 30], split membuat bagian tertentu hilang dan sisanya di jadikan array
+            const parts = waktu.split(':').map(part => parseFloat(part)); // parseFloat() buat ngejadiin isinya float
+            return (parts[0] * 60) + parts[1];
+        })
+
+        // jumlahkan semua detik
+        .reduce((total, detik) => total + detik);
+
+        // ubah formatnya jadi jam menit detik
+        const jam = Math.floor( JSlanjutan / 3600 );// pembulatan kebawah
+        const menit = Math.floor( ( JSlanjutan % 3600 ) / 60 );
+        const detik = JSlanjutan % 60;
+        
+        // simpan di dom
+        let jumlahVid = document.querySelector('.jumlah-video');
+        jumlahVid.textContent = videos.filter(li => li.textContent.includes('JAVASCRIPT LANJUTAN')).length + 'Video';
+
+        let totalDur = document.querySelector('.total-durasi');
+        totalDur.textContent = `${jam} Jam ${menit} Menit ${detik} Detik`;
+        
+    </script>
+</body>
+</html>

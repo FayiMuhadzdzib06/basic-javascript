@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring Function</title>
+</head>
+<body>
+    <script>
+        // Destructuring Function
+        function kalkulasi(a, b){
+            return [a + b, a - b, a * b, a / b];
+        }
+        const [tambah, kurang, kali, bagi = 'Tidak Ada'] = kalkulasi(5, 5);
+        // tapi kalau urutan/nama variabelnya salah maka hasilnya bakal beda
+
+        // mangkanya biar gak ada problem kek gtu pakai object]
+        function kalkulasi2(a, b){
+            return {
+                tambah: a + b,
+                kurang: a - b,
+                kali: a * b,
+                bagi: a / b
+            }
+        }
+        const { tambah: tmbh, kurang: krng, kali: kli, bagi: bgi } = kalkulasi2(10, 5);
+
+        // Destructuring function arguments
+        const mhs = {
+            nama: 'Fayi Muhadzdzib',
+            umur: 17,
+            email: 'fayi16@gmail.com',
+            nilai: {
+                tugas: 85,
+                uts: 82,
+                uas: 90
+            }
+        }
+        function cetakMhs({ nama, umur, nilai: { tugas, uts, uas } }){
+            return `Halo, Nama saya ${nama}, dan umur saya ${umur} tahun, Nilai - nilai saya selama sekolah cukup bagus, dimulai dari tugas harian : ${tugas}, uts : ${uts}, uas : ${uas}. Total jumlah semua nilainya adalah ${Math.round((tugas + uts + uas) / 3)}`;
+        }
+        console.log(cetakMhs(mhs));
+    </script>
+</body>
+</html>

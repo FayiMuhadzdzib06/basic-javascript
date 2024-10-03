@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This Pada Arrow Function</title>
+</head>
+<body>
+    <script>
+        // Konsep This Pada Arrow Function
+
+        // Constructor Function
+        // const Mahasiswa = function(){
+        //     this.nama = 'fayi';
+        //     this.umur = '17';
+        //     this.sayhelo = function(){
+        //         console.log(`Halo, Nama saya ${this.nama}, berumur ${this.umur} Tahun`);
+        //     }
+        // }
+        // const fayi = new Mahasiswa();
+        
+        // Arrow Function
+        // const Mahasiswa = function(){
+        //     this.nama = 'fayi';
+        //     this.umur = '17';
+        //     this.sayhelo = () => {
+        //         console.log(`Halo, Nama saya ${this.nama}, berumur ${this.umur} Tahun`);
+        //     }
+        // }
+        // const fayi = new Mahasiswa();
+
+        // Object Literal
+        const mhs = {
+            nama: 'fayi',
+            umur: 17,
+            sayhelo: () => { // kalo pke arrow function gak bakal ketemu thisnya, jadi arrow function itu gak punya konsep this 
+                console.log(`Halo, Nama saya ${this.nama}, berumur ${this.umur} Tahun`);
+            }
+        }
+
+        const Mahasiswa = function(){
+            this.nama = 'fayi';
+            this.umur = '17';
+            this.sayhelo = function(){
+                console.log(`Halo, Nama saya ${this.nama}, berumur ${this.umur} Tahun`);
+            }
+            // klo gak pke arrow function bakal kena hoisting, "this"nya bakal nyari ke global scope
+            setInterval(() => { // tapi klo pke arrow function "this"nya bakal cari ke leksikal scopenya
+                console.log(this.umur++);
+            }, 500);
+        }
+        const fayi = new Mahasiswa();
+        
+    </script>
+</body>
+</html>

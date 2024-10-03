@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring Variable</title>
+</head>
+<body>
+    <!-- Expression pada javascript yang membuat kita dapat membongkar nilai dari array atau properti dari object kedalam variable yang terpisah -->
+    <script>
+        // Destructuring Array
+        const perkenalan = ["Halo", "nama", 'saya', 'fayi'];
+
+        // const [salam, satu, dua, fayi] = perkenalan;
+
+        // skipping items
+        const [salam, , , fayi] = perkenalan; // kalo gak mau semua arraynya di masukin
+
+        // swap items / menukar isi variabel
+        // let a = 1;
+        // let b = 2;
+        // [a, b] = [b, a];
+
+        // return value pada function
+        function coba(){
+            return [1, 2];
+        }
+        const [tes1, tes2] = coba();
+
+        // Rest Parameter
+        const [a, ...values] = [1, 2, 3, 4, 5];
+        console.log(a); // 1
+        console.log(values); // [2, 3, 4, 5]
+
+        // Destructuring Object
+        const tes = {
+            nama: 'Fayi Muhadzdzib',
+            umur: 17
+        }
+        const { nama, umur } = tes; // nama variabelnya harus sama dengan properti objectnya, klo beda eror
+
+        // Assignment tanpa deklarasi object
+        ({ nama, umur } = {
+            nama: 'Nabil Abiyyu',
+            umur: 13
+        });
+        console.log(nama); // Nabil Abiyyu
+
+        // Assign ke variabel baru
+        const cba = {
+            nama: 'Fayi Muhadzdzib',
+            umur: 17
+        }
+        const { nama: n, umur: u } = cba; // ganti nama variabelnya bisa kek gni
+
+        // Memberikan Default Value
+        const cba2 = {
+            name: 'Fahtar Ibroham',
+            age: 17,
+            email: 'fatar17@gmail.com'
+        }
+        const { name, age, email = 'defaultemail@gmail.com'} = cba2;
+        // klo property email di objectnya gak ada maka bakal dikasih nilai defaulnya ini "defaultemail@gmail.com"
+
+        // Memberi nilai default + assign ke variabel baru
+        const cba3 = {
+            name: 'Iqbal Nuragun',
+            age: 17,
+            email: 'iqbal17@gmail.com'
+        }
+        const { name: n2, age: a2, email: e = 'defaultemail@gmail.com'} = cba3;
+        
+        // Rest Parameter di Object
+        const cba4 = {
+            name: 'Daffa Ibrohim',
+            age: 15,
+            email: 'daffa17@gmail.com'
+        }
+        const { name: n3, ...valuess} = cba4; // ...valuess ini isinya bakalan object
+
+        // mengambil field pada object, setelah dikirim sebagai parameter untuk function
+        const mhs = {
+            id: 123,
+            nama: 'Fayi Muhadzdzib',
+            umur: 17
+        }
+        function getIdMhs({ id }){ // jadi di bongkar dlu biar cuma property "id"nya aja yang di ambil sisanya kgk
+            return id;
+        }
+        console.log(getIdMhs(mhs));
+    </script>
+</body>
+</html>

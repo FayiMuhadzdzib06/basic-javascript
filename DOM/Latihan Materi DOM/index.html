@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galery</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            background-color: rgb(34, 34, 34);
+        }
+        .container {
+            width: calc(100% - 300px);
+            margin: 50px auto;
+            border: 1px solid black;
+            display: grid;
+            grid-template-areas: 'thumb thumb thumb';
+            grid-template-rows: 800px;
+            grid-gap: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .2);
+        }
+        .container .thumb {
+            grid-area: thumb;
+            width: 100%;
+            height: 100%;
+            background-image: url('img/foto1.jpeg');
+            background-size: cover;
+        }
+        .container .img {
+            width: 100%;
+            height: 250px;
+            filter: grayscale(100%);
+            transition: .2s;
+            cursor: pointer;
+        }
+        .container .img:hover {
+            filter: grayscale(0);
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .fade {
+            opacity: 0;
+            animation: fadeIn .5s forwards;
+        }
+        .container .aktif {
+            filter: grayscale(0);
+        }
+        @media screen and (max-width: 560px) {
+            .container {
+                margin: 70px auto;
+                transform: scale(.9);
+                width: calc(100% - 50px);
+                grid-template-rows: 300px;
+            }
+            .container .img{
+                height: 130px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <img src="img/foto1.jpeg" alt="" class="thumb">
+        <img src="img/foto2.jpeg" alt="" class="img">
+        <img src="img/foto3.jpeg" alt="" class="img">
+        <img src="img/foto4.jpeg" alt="" class="img">
+        <img src="img/foto5.jpeg" alt="" class="img">
+        <img src="img/foto6.jpeg" alt="" class="img">
+        <img src="img/foto7.jpeg" alt="" class="img">
+    </div>
+
+    <script>
+        const container = document.querySelector('.container');
+        const thumb = document.querySelector('.thumb');
+        let penangkal = null;
+        container.addEventListener('click', function(e){
+            // console.log(e.target);
+            if( e.target.className == 'img' ){
+                if(penangkal != null){
+                    penangkal.classList.remove('aktif');
+                }
+                // src berdasarkan src tag img yg di click
+                thumb.src = e.target.src;
+                thumb.classList.add('fade');
+                setTimeout(function(){
+                    thumb.classList.remove('fade');
+                }, 500); // 500 = setengah detik / 500 milsecond
+
+                e.target.classList.add('aktif');
+                penangkal = e.target;
+            }
+        });
+    </script>
+</body>
+</html>

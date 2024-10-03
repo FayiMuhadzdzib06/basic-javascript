@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 1</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body { 
+            text-align: center;
+        }
+        .kotak {
+            width: 25px;
+            height: 25px;
+            margin: 10px auto;
+        }
+        .merah {
+            background-color: red;
+        }
+        .hijau {
+            background-color: green;
+        }
+        .biru {
+            background-color: blue;
+        }
+        .biru-muda{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bermain Dengan Warna</h1>
+    <button type="button" id="tUbahWarna">Ubah Warna</button>
+    <br><br>
+    <div class="kotak merah"></div>
+    <input type="range" name="sMerah" min="0" max="255">
+    <br><br><br>
+    <div class="kotak hijau"></div>
+    <input type="range" name="sHijau" min="0" max="255">
+    <br><br><br>
+    <div class="kotak biru"></div>
+    <input type="range" name="sBiru" min="0" max="255">
+
+    <script>
+        const button = document.getElementById('tUbahWarna');
+        button.onclick = function(){
+            // document.body.style.backgroundColor = 'lightblue';
+            document.body.classList.toggle('biru-muda');
+        }
+
+
+        // pembuatan button baru
+        const tAcakWarna = document.createElement('button');
+        const teks = document.createTextNode('Acak Warna');
+        tAcakWarna.appendChild(teks);
+        tAcakWarna.setAttribute('type', 'button');
+        // button.before(tAcakWarna); // before berfungsi umtuk taro elemen sebelum element yang diinginkan
+        button.after(tAcakWarna); // after berfungsi umtuk taro elemen setelah element yang diinginkan
+
+        // Event saat mengClick tombol Acak Warna
+        tAcakWarna.addEventListener('click', function(){
+            // Math.round untuk pembulatan angka
+            // Math.ceil untuk pembulatan angka ke atas
+            // Math.flooor untuk pembulatan angka ke bawah
+            // Math.random untuk menghasilkan bilangan random
+            const r = Math.round(Math.random() * 255 + 1); // jika ingin nilai math.random dibawah 255  
+            const g = Math.round(Math.random() * 255 + 1);
+            const b = Math.round(Math.random() * 255 + 1);
+            document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        });
+
+
+        // pembuatan input pengatur warna
+        const sMerah = document.querySelector('input[name = sMerah]');
+        const sHijau = document.querySelector('input[name = sHijau]');
+        const sbiru = document.querySelector('input[name = sBiru]');
+
+        sMerah.addEventListener('change', function(){
+            // value untuk mengambil nilai yang ada di elemen input
+            document.body.style.backgroundColor = 'rgb('+ sMerah.value +', '+ sHijau.value +', '+ sbiru.value +')';
+        });
+        sHijau.addEventListener('change', function(){
+            // value untuk mengambil nilai yang ada di elemen input
+            document.body.style.backgroundColor = 'rgb('+ sMerah.value +', '+ sHijau.value +', '+ sbiru.value +')';
+        });
+        sbiru.addEventListener('change', function(){
+            // value untuk mengambil nilai yang ada di elemen input
+            document.body.style.backgroundColor = 'rgb('+ sMerah.value +', '+ sHijau.value +', '+ sbiru.value +')';
+        });
+
+        document.body.addEventListener('mousemove', function(event) {
+            // posisi mouse
+            // console.log(event.clientX);
+            // console.log(window.innerWidth); // innerWidth untuk mengetahui lebar dari document/lebar putih di halaman website  
+            const xPos = Math.round((event.clientX / window.innerWidth) * 255);
+            const yPos = Math.round((event.clientY / window.innerHeight) * 255);
+            document.body.style.backgroundColor = `rgb(${xPos}, ${yPos}, 100`;
+        });
+
+    </script>
+</body>
+</html>

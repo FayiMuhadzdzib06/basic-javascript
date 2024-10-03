@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map, Filter dan Reduce</title>
+</head>
+<body>
+    <script>
+        const angka = [-1, 8, 9, 1, 4, -5, -4, 3, 2, 9];
+
+        // mencari angka >= 3
+        // for
+        // const newAngka = [];
+        // for(let i = 0; i < angka.length; i++){
+        //     if(angka[i] >= 3){
+        //         newAngka.push(angka[i]);
+        //     }
+        // }
+        // console.log(newAngka);
+
+        // filter
+        let filter = angka.filter(a => a >= 3);
+        console.log(filter);
+
+        // map
+        let map = angka.map(a => a * 2); // masing" dikalikan 2
+        console.log(map);
+
+        // reduce
+        // untuk melakukan sesuatu pada seluruh isi arraynya
+        // jumlahkan seluruh isi arraynya
+        // harus punya 2 parameter
+        // klo gak di tambahin default nilai paling awalnnya "0" + -1 + 8 + 9 + 1 + 4 + -5 + -4 + 3 + 2 + 9
+        const reduce = angka.reduce((accumulator, currentValue) => accumulator + currentValue); // habis "accumulator + currentValue" sebenarnya ada nilai lagi, nilai defaulnta 0, klo di ubah jadi 5 maka yang di arraynya ada angka 5 paling awal
+        console.log(reduce);
+
+
+        // Method Chaining
+        // Cari angka > 5 dlu baru
+        // kalikan 3 lalu
+        // jumlahkan semuanya
+        const hasil = angka.filter(a => a > 5) // hasilnya : 8, 9, 9
+                            .map(a => a * 3) // hasilnya : 24, 27, 27
+                            .reduce((acc, cur) => acc + cur); // 78
+        console.log(`Hasilnya : ${hasil}`);
+
+    </script>
+</body>
+</html>

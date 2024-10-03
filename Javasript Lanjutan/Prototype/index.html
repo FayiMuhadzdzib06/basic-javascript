@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+<body>
+    <script>
+        // Object Literal
+        // Problem : tidak efektif untuk object yang banyak
+        let playerOL = {
+            nama: 'Fayi Muhadzdzib',  
+            energy: 10,
+            // makan = method, method harus diisi function atau gampangnya
+            // klo ada property yg isinya function itu namanya method
+            makan: function(porsi){
+                this.energy += porsi;
+                console.log(`Hallo ${this.nama}, Selamat Mengisi Energy mu!! \nEnergy Mu saat ini : ${this.energy}`);
+            }
+        }
+        
+        // function declaration
+        // Problem : jadi 2 kali kerja, ribet
+        let methodPlayer = {
+            makan : function(porsi){
+                this.energy += porsi;
+                console.log(`Hallo ${this.nama}, Selamat Mengisi Energy mu!! \nEnergy Mu saat ini : ${this.energy}`);
+            },
+            main : function(jam){
+                this.energy -= jam;
+                console.log(`Hallo ${this.nama}, Selamat Bermain!! \nEnergy Mu saat ini : ${this.energy}`);
+            }
+        }
+        function playerFD(nama, energy){
+            let player = Object.create(methodPlayer); // sama aja kek yang 'let player = {}', bedanya dia bisa memasukkan object di dalam parameternya tanpa harus di deklarasiin dlu
+            player.nama = nama ;
+            player.energy = energy ;
+            return player;
+        }
+        let fayi = playerFD('Fayi Muhadzdzib', 20);
+        let nabil = playerFD('Nabil Abiyyu', 12);
+
+        // Constructor
+        // keyword new
+        // jadi hanya mengelola satu object
+        // Versi Prototype
+        function playerC(nama, energy){
+            // auto let this = object.create(playerC.prototype);
+            this.nama = nama ;
+            this.energy = energy ;
+            // auto return this;
+        }
+        playerC.prototype.makan = function(porsi){
+            this.energy += porsi;
+            return `Hallo ${this.nama}, Selamat Mengisi Energy mu!! \nEnergy Mu saat ini : ${this.energy}`;
+        }
+        playerC.prototype.main = function(jam){
+            this.energy -= jam;
+            return `Hallo ${this.nama}, Selamat Bermain!! \nEnergy Mu saat ini : ${this.energy}`;
+        }
+        playerC.prototype.tidur = function(jam){
+            this.energy += jam * 2;
+            return `Hallo ${this.nama}, Selamat Tidur!! \nEnergy Mu saat ini : ${this.energy}`;
+        }
+        // harus menggunakan keyword NEW
+        var iyaf = new playerC('Fayi Muhadzdzib', 20);
+        var ndut = new playerC('Nabil Abiyyu', 10);
+        
+        // Versi Class
+        // mke class ini sebenarnya di balik layar yang dikerjakan seperti yang di atas
+        // cuma di bungkus agar terlihat rapih dan kebaca aja
+        class NewPlayer {
+            // constructor = propertinya
+            constructor(nama, energy){
+                this.nama = nama
+                this.energy = energy
+            }
+            
+            makan(porsi){
+                this.energy += porsi;
+                return `Hallo ${this.nama}, Selamat Mengisi Energy mu!! \nEnergy Mu saat ini : ${this.energy}`;
+            }
+
+            main(jam){
+                this.energy -= jam;
+                return `Hallo ${this.nama}, Selamat Bermain!! \nEnergy Mu saat ini : ${this.energy}`;
+            }
+
+            tidur(jam){
+                this.energy += jam * 2;
+                return `Hallo ${this.nama}, Selamat Tidur!! \nEnergy Mu saat ini : ${this.energy}`;
+            }
+        }
+        let nurul = new NewPlayer('Nurul Halimah', 15);
+
+    </script>
+</body>
+</html>

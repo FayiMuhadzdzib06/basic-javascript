@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh 1</title>
+</head>
+
+<body>
+    <script>
+        // function "contoh(a, b)" => PARAMETER
+        //  Parameter adalah Variable yang ditulis didalam kurung pada saat function dibuat, digunakan untuk menampung nilai yang dikirimkan saat function di panggil
+
+        function jumlahVolumeDuaKubus(a, b) {
+            var hasil, volumeA, volumeB;
+
+            volumeA = a * a * a;
+            volumeB = b * b * b;
+            hasil = volumeA + volumeB;
+
+            return hasil; // return berfungsi untuk mengembalikan nilai atau mudahnya jika tidak menggunakan return maka isi fungsinya hanya berjalan di dalam function saja 
+        }
+
+        alert('Jumlah Volume yang pertama : ' + jumlahVolumeDuaKubus(8, 3));
+        alert('Jumlah Volume yang kedua : ' + jumlahVolumeDuaKubus(10, 15));
+
+        // function "contoh(8, 3)" => ARGUMENT
+        // Argument adalah nilai yang dikirimkan ke parameter saat fungsi dipanggil
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh 2</title>
+</head>
+<body>
+    <script>
+        // melooping isi argument sebanyak yang dikirimkan saat fungsinya di panggil
+        function tambah(){
+            var hasil = 0;
+            for(var i = 0; i < arguments.length; i++){
+                hasil += arguments[i];
+            }
+            return hasil;
+        }
+        var coba = tambah(1,2,3,4);
+        alert(coba);
+    </script>
+</body>
+</html>

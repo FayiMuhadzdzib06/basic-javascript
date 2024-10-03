@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Progress</title>
+    <style>
+        body{
+            background-color: rgb(34, 34, 34);
+        }
+        .container {
+            max-width: 500px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, .1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, .1);
+            margin: 200px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 5px;
+            position: relative;
+            backdrop-filter: blur(25px);
+            z-index: 1;
+        }
+        button {
+            width: 150px;
+            height: 50px;
+            font-size: 1.2em;
+            margin-top: 30px;
+            cursor: pointer;
+            border: none;
+            background-color: black;
+            color: rgba(255, 255, 255, .5);
+            border-radius: 10px;
+            box-shadow: inset 5px 5px 10px rgba(255, 255, 255, .3),
+            0 0 10px rgba(0, 0, 0, .3);
+            transition: .5s;
+        }
+        button:hover {
+            color: aqua;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+        }
+        @keyframes lompat {
+            0% {
+                margin-top: 30px;
+            }
+            50% {
+                margin-top: 0;
+            }
+            100% {
+                margin-top: 30px;
+            }
+        }
+        @keyframes kedip {
+            from {
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.603);
+            }
+            to {
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.603);
+            }
+        }
+        .bar-loader {
+            width: calc(100% - 50px);
+            height: 15px;
+            border-radius: 50px;
+            background-color: #aaa;
+            position: absolute;
+            bottom: 30px;
+        }
+        .loader-liquid {
+            width: 0;
+            height: 100%;
+            background-color: aqua;
+            transition: 2s;
+            transition-timing-function: ease-in-out;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.603);
+            animation: kedip .5s ease infinite alternate-reverse;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button>Submit</button>
+        <div class="bar-loader">
+            <div class="loader-liquid"></div>
+        </div>
+    </div>
+    
+    <script>
+        const btn = document.querySelector('button');
+        const load = document.querySelector('.loader-liquid');
+
+        btn.onclick = function(){
+            load.style.width = '100%';
+            btn.style.animation = 'lompat .7s ease-in-out forwards';
+        }
+    </script>
+</body>
+</html>

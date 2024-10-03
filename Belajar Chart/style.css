@@ -1,0 +1,17 @@
+.chart-wrapper {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}
+body{
+    background-color: white;
+    color: black;
+}
+.hitam {
+    background-color: #141414;
+    color: white;
+}
+#mode {
+    position: fixed;
+    top: 0;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Literal</title>
+</head>
+<body>
+    <!-- Hanya Menggunakan Back tick ( ` ) -->
+    <!-- bisa melakukan Multi-line String -->
+    <!-- Embedded Expression -->
+    <!-- Html Fragments -->
+    <!-- Expression Interpolation -->
+    <!-- Tagged Template -->
+    <div id="aku"></div>
+
+    <script>
+        // contoh multi-line string
+        let tes = `String ke-1
+String ke-2 `; // bisa dienter biar kebawah
+        console.log(tes); // tapi spasi berpengaruh juga
+
+        // contoh Multi-line String (HTML Fragments)
+        const aku = {
+            nama: 'Fayi Muhadzdzib',
+            umur: 17,
+            email: 'fayi@gmail.com'
+        }
+        let el = `<div class="aku">
+            <h2>Nama : ${aku.nama}<h2>
+            <span class="aku">Email : ${aku.email}</span>
+        </div>`;
+        document.getElementById('aku').innerHTML = el;
+
+        // contoh Embedded Expression
+        let a = 10;
+        let b = 20;
+        console.log(`Jika a = 10 dan b = 20, Maka hasil penjumlahannya adalah : ${a + b}, bukan ${2 * a + b}`);
+        // atau
+        console.log(`${(a % 2 == 0) ? 'Genap' : 'Ganjil'}`);
+        let ajsb = ``
+
+
+    </script>
+</body>
+</html>

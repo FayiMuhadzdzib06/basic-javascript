@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Multi Select Option</title>
+    <style>
+        .select-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+        }
+
+        .select-box {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .select-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .select-option {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .select-option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .selected-options {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="select-wrapper">
+        <div class="select-box" onclick="toggleOptions()">
+            Select Options
+        </div>
+        <div class="select-options" id="selectOptions">
+            <div class="select-option" onclick="selectOption(event)">
+                Option 1
+            </div>
+            <div class="select-option" onclick="selectOption(event)">
+                Option 2
+            </div>
+            <div class="select-option" onclick="selectOption(event)">
+                Option 3
+            </div>
+            <div class="select-option" onclick="selectOption(event)">
+                Option 4
+            </div>
+        </div>
+    </div>
+
+    <div class="selected-options" id="selectedOptions">
+    </div>
+
+    <script>
+        function toggleOptions() {
+            const selectOptions = document.getElementById('selectOptions');
+            selectOptions.style.display = selectOptions.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function selectOption(event) {
+            const selectedOption = event.target;
+            const selectedOptionText = selectedOption.textContent.trim();
+
+            selectedOption.classList.toggle('selected');
+
+            const selectedOptionsContainer = document.getElementById('selectedOptions');
+            const selectedOptionsText = selectedOptionsContainer.textContent.trim().replace('Selected Options: ', '');
+            const selectedOptions = selectedOptionsText.split(', ');
+
+            if (selectedOptions.includes(selectedOptionText)) {
+                const index = selectedOptions.indexOf(selectedOptionText);
+                selectedOptions.splice(index, 1);
+            } else {
+                selectedOptions.push(selectedOptionText);
+            }
+
+            selectedOptionsContainer.textContent = 'Selected Options: ' + selectedOptions.join(', ');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread Operator</title>
+    <style>
+        body{
+            background-color: salmon;
+            text-align: center;
+        }
+        .judul {
+            color: white;
+            font-size: 3em;
+        }
+        .judul span {
+            display: inline-block;
+            cursor: pointer;
+            transition: .5s;
+        }
+        .judul span:hover {
+            transform: translateY(-20px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Memecah ( expand / unpack ) iterables menjadi single element -->
+    <!-- Iterable Object = String, Array, Arguments / Nodelist, TypedArray, Map, Set, User-defined Iterables -->
+    <ul>
+        <li>Fayi Muhadzdzib</li>
+        <li>Fahtar Ibroham</li>
+        <li>Iqbal Nuragun</li>
+        <li>Morgan Pardede</li>
+        <li>Daffa Ibrahim</li>
+    </ul>
+
+    <h1 class="judul">Hello World</h1>
+
+    <script>
+        const zold = ['fayi', 'fatar', 'ibal'];
+        // console.log(...zold[0]); 
+
+        // Menggabungkan 2 atau lebih array
+        const bro = ['rajwa', 'gibran', 'nabil'];
+        const orang = [...zold, 'bonte', ...bro];
+        // console.log(orang);
+
+        // Meng-copy Array
+        const zoldClone = [...zold];
+        // zoldClone[3] = 'daffa';
+        // console.log(zoldClone);
+
+        // masukkin nodelist ke array
+        const list = document.querySelectorAll('ul li');
+        const listArray = [...list].map(li => li.innerHTML);
+        console.log(listArray);
+        
+
+        // animasi tiap kata 
+        const judul = document.querySelector('.judul');
+        const huruf = [...judul.textContent].map( h => `<span>${h}</span>` ).join('');
+        judul.innerHTML = huruf;
+
+    </script>
+</body>
+</html>

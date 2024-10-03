@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh 1</title>
+</head>
+<body>
+    <script>
+        // global scope / window scope
+        var a = 1;
+        var c = 3;
+        
+        function tes() {
+            var b = 2;
+            console.log(a);
+            // name conflict = memiliki variabel yang sama namun isinya dan penenpatannya berbeda dan apabila di jalankan di dalam function maka hasilnya sesuai dengan isi yang di dalam function dan jika di jalankan di luar function maka isinya sesuai dengan isi variable yang di luar function
+            var c = 5;
+            console.log(window.c);
+            // window. = menjalankan isi variabel window atau global
+        }
+        tes();
+        console.log(b);
+
+        // function scope = jika di dalam function ada variabel kita tidak bisa mengakses variabel tersebut dari luar function, tapi kita bisa mengakses variabel di dalam function walaupun variabel tersebut di luar function
+    </script>
+</body>
+</html>

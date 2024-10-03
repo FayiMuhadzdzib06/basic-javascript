@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulation Element</title>
+    <style>
+        *{
+            border:  2px solid #dedede;
+            padding: 15px;
+            margin: 15px;
+        }
+        html {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            max-width: 600px;
+            margin: 30px auto;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+        }
+        .biru-muda {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="judul">Hello World</h1>
+    <div id="container">
+        <section id="a">
+            <p class="p1">paragraf 1</p>
+            <a href="http://instagram.com/Fkydzzb_">Instagram Fayi Muhadzdzib</a>
+            <p class="p2">paragraf 2</p>
+            <p class="p3">paragraf 3</p>
+        </section>
+        <section id="b">
+            <p>paragraf 4</p>
+            <ul>
+                <li>item 1</li>
+                <li>item 2</li>
+                <li>item 3</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // elemnt.innerHTML
+        // const judul = document.getElementById('judul');
+        // judul.innerHTML = 'Fayi Mujahdzdb';
+        // bisa memasukkan tag html
+        // saat diganti dengan hello world semua yang ada di dalam tag section akan hilang/diganti dengan HELLO WORLD
+        // const sectionA = document.querySelector('section#a');
+        // sectionA.innerHTML = 'Hello World';
+
+        // elemen.style.<properties>
+        // const judul = document.querySelector('#judul');
+        // judul.style.color = 'lightblue';
+        // judul.style.backgroundColor = 'orange';
+
+        // element.setAttribute()
+        // berfungsi menambahkan Attribute('attribute', 'nama attributnya') seperti class, id, href, name, dll
+        // jika element sudah punya class dan ingin di tambah class lain maka class yang lama akan di timpa dgn yg baru
+        // const judul = document.querySelector('h1');
+        // judul.setAttribute('class', 'headerName');
+        // const a = document.querySelector('a');
+        // a.setAttribute('id', 'link');
+
+        // element.getAttribut()
+        // untuk mengetahui isi dari attribute 
+        // let coba = a.getAttribute('href');
+        // alert(coba);
+
+        // element.removeAttribute()
+        // untuk menghapus sebuah attribute
+        // a.removeAttribute('href');
+
+        // element.classList.Add()
+        // menambah class tanpa harus menimpanya
+        const p2 = document.querySelector('.p2');
+        p2.classList.add('label', 'iko', 'uco', 'abo');
+
+        // element.classList.remove()
+        // menghapus class
+        // p2.classList.remove('label');
+
+        // element.classList.toggle()
+        // jika blm ada nama classnya maka tambahkan jika sudah ada hapus yang sudah ada
+        // p2.classList.toggle('mori'); // ditambahkan
+        // p2.classList.toggle('mori'); // di cek lagi sudah ada jadi di hapus nama classnya
+        document.body.classList.toggle('biru-muda');
+
+        // element.classList.item()
+        // untuk mencari tahu apa nama classnya
+        // let coba = p2.classList.item(1);
+        // alert(coba);
+
+        // element.classList.contains()
+        // untuk mencari tahu apakah ada nama class tersebut
+        // jika ada akan menampilkan TRUE klo nggk FALSE
+        let coba = p2.classList.contains('label'); 
+        if(coba){
+            alert('ada dong!!');
+        }else {
+            alert('gak ada bang!!');
+        }
+
+        // element.classList.replace()
+        // mengganti nama class dari iko = ikowais
+        p2.classList.replace('iko', 'ikowais');
+    </script>
+</body>
+</html>

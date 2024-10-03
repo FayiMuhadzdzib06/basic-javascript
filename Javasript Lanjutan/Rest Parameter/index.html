@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Parameter</title>
+</head>
+<body>
+    <!-- Merepresentasikan argument pada function dengan jumlah yang tidak terbatas menjadi sebuah array -->
+
+    <script>
+        // Rest Parameter
+        function myFunc(a, b, ...myArg){ // jadi dia bisa ngambil semua sisa argumentnya kalo parameternya gak sesuai am argumentnya
+            return `a = ${a}, b = ${b}, myArg = ${myArg}`;
+        }
+        console.log(myFunc(1, 2, 3, 4, 5));
+
+        // menjumlahkan seluruh isi argument
+        function jumlahkan(...angka){
+            let total = 0;
+            for(const t of angka){
+                total += t;
+            }
+            return total;
+
+            // klo make reduce()
+            // return angka.reduce((a, b) => a + b);
+        }
+        console.log(jumlahkan(1,2,3,4,5));
+
+        // Array Destructuring
+        const arr = ['fayi', 'gibran', 'nabil', 'rajwa'];
+        const [ketua, wakil, ...anggota] = arr;
+        // fayi = ketua
+        // gibran = wakil
+        // sisanya = anggota
+
+        // Object Destructuring
+        const kuyKerja = {
+            pm: 'Rendi',
+            frontEnd: 'Fayi',
+            backend: 'Reza'
+        }
+        const {leader, ...Team} = kuyKerja;
+
+        // Filtering
+        function filterBy(tipe, ...isi){
+            return isi.filter( i => typeof i === tipe); // typeof = buat ngasih tau tipe datanya apa
+        }
+        console.log(filterBy('string', 1, 2, true, 'Fayi', 10, 'fatar', false));
+    </script>
+</body>
+</html>
+
+

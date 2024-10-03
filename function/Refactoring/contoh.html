@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh</title>
+</head>
+
+<body>
+    <script>
+        // Refactoring adalah sebuah proses untuk mengubah kode kita menjadi lebih baik tanpa mengubah fungsionalitasnya atau singkatnya menyederhanakan sintaks tanpa mengubah fungsinya
+        function jumlahVolumeDuaKubus(a, b) {
+            // awalanya seperti ini
+            // var hasil, volumeA, volumeB;
+
+            // volumeA = a * a * a;
+            // volumeB = b * b * b;
+            // hasil = volumeA + volumeB;
+
+            // return hasil;
+
+            // saat di refactoring jadi seperti ini
+            return Math.pow(a,3) + Math.pow(b,3); 
+            // Math.pow(4, 2) => untuk membuat pangkat, jadi 4 pangkat 2 
+        }
+
+        alert('Jumlah Volume yang pertama : ' + jumlahVolumeDuaKubus(8, 3));
+        alert('Jumlah Volume yang kedua : ' + jumlahVolumeDuaKubus(10, 15));
+
+    </script>
+</body>
+
+</html>

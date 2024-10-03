@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membuat Object</title>
+</head>
+<body>
+    <script>
+        // membuat object
+        // Object Literal
+        var mhs1 = {
+            nama : "Fayi Muhadzdzib",
+            noHp : "08688767576",
+            email : "fayimujahid1@gmail.com",
+            jurusan : "RPL"
+        }
+        var mhs2 = {
+            nama : "Muhammed Irzy",
+            noHp : "08688767576",
+            email : "Izy@gmail.com",
+            jurusan : "RPL"
+        }
+        // function declaration
+        function buatObjekMahasiswa(nama, noHp, email, jurusan){
+            var mhs = {};
+            mhs.nama = "Fayi Muhadzdzib" ;
+            mhs.noHp = "08688767576" ;
+            mhs.email = "fayimujahid1@gmail.com" ;
+            mhs.jurusan = "RPL" ;
+            return mhs;
+        }
+        var mhs3 = buatObjekMahasiswa('abdul khafi', '087996675647', 'andul@gmail.com', 'MM');
+        var mhs4 = buatObjekMahasiswa('Jokowie', '087996675647', 'Djoko@gmail.com', 'MM');
+
+        // Constructor
+        function Mahasiswa(nama, noHp, email, jurusan){
+            // var this = {};
+            this.nama = nama;
+            this.noHp = noHp;
+            this.email = email;
+            this.jurusan = jurusan ;
+            // return this;
+        }
+        // harus menggunakan keyword NEW
+        var mhs5 = new Mahasiswa('Ericolim', '08977868775', 'email@gmail.com', 'RPL');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    <script>
+        // Promise
+        // Object yang merepresentasikan keberhasilan / kegagalan sebuah event yang asynchronous di masa yang akan datang
+
+        // janji ( terpenuhi / ingkar )
+        // STATES[janji] ( FULFILLED[terpenuhi] / REJECT[ingkar] / PENDING( waktu tunggunya ) )
+
+        // untuk menjalankan 3 keadaan ini harus menggunakan fungsi CALLBACKS
+        // callback ( resolve( dibuat ketika janjinya terpenuhi ) / reject( dibuat ketika janjinya tidak terpenuhi ) / finally( ketika waktu tunggunya selesai )  )
+
+        // dalam promise ini ada aksi yng bakal di lakuin
+        // aksi ( then / catch )
+
+        // promise biasanya di pakai ketika kita mau request ke API
+
+
+        // contoh1 
+        // bagian promise
+        let ditepati = true;
+        const janji1 = new Promise((resolve, reject) => {
+            if( ditepati ){
+                resolve('Janji telah ditepati!!');
+            }else{
+                reject("Ingkar Janji");
+            }
+        });
+
+        // bagian callback
+        // response = bisa apa aja namanya, dia kek parameter
+        // response itu isinya bisa "resolve('janji telah di tepati')" atau "reject('Ingkar Janji')". tergantung pakainya apa kalau pakainya "then" dia ambil resolve klo "catch" dia ambil reject
+        janji1
+            .then(response => console.log('OK! : ' + response))
+            .catch(response => console.log(`NOT OK! : ${response}`));
+
+
+        // contoh 2
+        let ditepatin = true;
+        const janji2 = new Promise((resolve, reject) => {
+            if( ditepatin ){
+                setTimeout(() => {
+                    resolve('Janji telah ditepati!');
+                }, 2000);
+            }else {
+                setTimeout(() => {
+                    reject('Janji telah diingkari!!');
+                }, 2000);
+            };
+        });
+
+        // biar keliatan asynchronousnya juga
+        console.log('mulai');
+        // console.log(janji2.then(() => console.log(janji2))); // ini kalau mau keliatan pendingnya
+        janji2
+        .finally(response => console.log('Selesai Menunggu!!'))
+        .then(response => console.log('OK! : ' + response))
+        .catch(response => console.log(`NOT OK! : ${response}`));
+        console.log('selesai');
+
+
+        // Promise.all()
+        // untuk menjalankan semua promise sekaligus
+
+        // anggep aja lu lagi konekin ke 2 API yg berbeda
+        const film = new Promise(resolve => {
+            resolve([{
+                title: "The Avengers",
+                pemeran: ['thor', 'ironman', 'hulk'],
+                rating: 100
+            }]);
+        });
+        
+        const cuaca = new Promise(resolve => {
+            resolve([{
+                tempat: 'Jakarta',
+                suhu: -5,
+                tekanan_udara: 9876
+            }])
+        })
+    
+        Promise.all([film, cuaca])
+            // .then(response => console.log(response)); 
+            // kalau gak mau di jadiin satu array pakai ini
+            .then(response => {
+                const [film, cuaca] = response;
+                console.log(film);
+                console.log(cuaca);
+            })
+
+    </script>
+</body>
+</html>
